@@ -64,9 +64,9 @@ include("include/header.php");
 
   <!-- Text input-->
   <div class="form-group">
-    <label class="col-md-4 control-label" for="power">Pouvoir</label>
+    <label class="col-md-4 control-label" for="supersuperpower">Pouvoir</label>
     <div class="col-md-4">
-    <input id="power" name="power" placeholder="<?=$student["power"]?>" class="form-control input-md" type="text">
+    <input id="superpower" name="superpower" placeholder="<?=$student["superpower"]?>" class="form-control input-md" type="text">
 
     </div>
   </div>

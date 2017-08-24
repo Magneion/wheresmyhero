@@ -20,7 +20,7 @@ include("include/header.php");
     </div>',
     $row["firstname"],
     $row["lastname"],
-    $row["power"],
+    $row["superpower"],
     $row["id"],
     $row["id"],
     $row["id"],
