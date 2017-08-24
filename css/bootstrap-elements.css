@@ -1,0 +1,23 @@
+.container {
+	background-color: midnightblue;
+}
+
+.row {
+	margin-bottom:30px;
+}
+
+.col-sm-12 {
+	background-color:lightblue;
+}
+
+.col-sm-6 {
+	background-color:lightblue;
+}
+
+.col-sm-4 {
+	background-color:lightblue;
+}
+
+.mycol {
+	padding-bottom: 20px;
+}

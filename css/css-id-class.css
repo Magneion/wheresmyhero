@@ -1,0 +1,16 @@
+#un-bloc {
+	background-image:url(../img/civilwar.jpg);
+	background-size:cover;
+	background-position: bottom center;
+	/* background size & position : SUPER UTILE POUR LES HEADERS OMG ÇA MARCHE*/
+	height:200px;
+	width:100%;
+}
+
+.centered {
+	text-align:center;
+	background-color:navy;
+	color:lightyellow;
+	margin:30px 0 30px 0;
+	padding: 15px;
+}

@@ -1,0 +1,30 @@
+footer {
+  text-align: center;
+  margin: 2em;
+}
+
+nav {
+  padding: 0.5em;
+}
+
+h1 {
+  padding: 1em;
+}
+
+li {
+  padding: 0.2em;
+  list-style: none;
+}
+
+.form-group {
+  padding: 1em;
+}
+
+a,
+a:visited,
+a:hover,
+a:focus
+ {
+  text-decoration: none;
+  color: #fff;
+}
