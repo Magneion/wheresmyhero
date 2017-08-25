@@ -7,16 +7,16 @@ $connection = new mysqli(
   $db_base
 );
 
-$_POST = json_decode($_POST);
+$jsonvar = json_decode($_POST);
 $request = sprintf("UPDATE eleves SET
 firstname='%s',
 lastname='%s',
 promotion_id='%d',
 WHERE id='%s'",
-$_POST['firstname'],
-$_POST['lastname'],
-$_POST['promotion_id'],
-$_POST['id']
+$jsonvar['firstname'],
+$jsonvar['lastname'],
+$jsonvar['promotion_id'],
+$jsonvar['id']
 );
 
 if($connection->query($request)) {

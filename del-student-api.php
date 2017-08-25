@@ -7,10 +7,10 @@ $connection = new mysqli(
   $db_base
 );
 
-$_POST = json_decode($_POST);
+$jsonvar = json_decode($_POST);
 $request = sprintf("DELETE FROM eleves
 WHERE id='%s'",
-$_POST['id']
+$jsonvar['id']
 );
 
 if($connection->query($request)) {
