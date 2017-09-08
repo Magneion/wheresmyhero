@@ -1,4 +1,0 @@
-*.lock
-bower_componants
-node_modules
-config/db.php

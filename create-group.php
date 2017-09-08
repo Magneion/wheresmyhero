@@ -1,58 +1,47 @@
 <?php
+  include("include/header.php");
 
-    include("include/header.php");
-
-  // Si on n’a pas de id dans les paramètres de l’URL, on bloque la page
-  if (isset($_GET["id"]) && $_GET["id"] != "" && $_GET["id"] != 0) {
-
-    // Si on a des variables en POST, on tente de modifier la promotion ciblée
-    if (isset($_POST["groupname"]) && $_POST["groupname"] != " ") {
-      $request = sprintf("UPDATE promotions SET name='%s' WHERE id='%s'",
-                  $_POST["groupname"], $_POST["id"]);
-      if($connection->query($request)) {
-          printf("<div class='alert alert-success'>Groupe modifié</div>");
-      }
-      else {
-        // Gestion d’erreur SQL
-        printf("<div class='alert alert-warning'>Erreur: %s</div>", $connection->error);
-      }
-    }
-
-    // On a un id en GET, on sélectionne la promotion et ses informations
-    $request = sprintf("SELECT * FROM promotions WHERE id=%s", $_GET["id"]);
-    $result = $connection->query($request);
-    $promotion = $result->fetch_assoc();
+// Si on a reçu des paramètres en POST grâce au formulaire
+if(isset($_POST["groupname"]) && $_POST["groupname"] != " ") {
+  // On prépare la requête au serveur de base de données
+  $request = sprintf("INSERT INTO promotions (name) VALUES ('%s')",
+              $_POST["groupname"]);
+  // On execute la requête
+  if($connection->query($request)) {
+      // Si on est ici, c’est que ça a marché
+      printf("<div class='alert alert-success'>Promotion créée</div>\n<a href='promotions.php'>Retour à la liste des promotions</a>");
   }
   else {
-    // message d’alerte si on n’a pas d’id en paramètre d’URL
-    printf("<div class='alert alert-danger'>Pas d’ID renseigné</div>");
-    die();
+    // Si on est ici, c’est que ça a foiré. Message pour la gestion d’erreur MySQL
+    printf("<div class='alert alert-warning'>Erreur: %s</div>", $connection->error);
   }
-?>
+}
 
-    <form class="form-horizontal breathe">
+?>
+  <form method="POST" class="form-horizontal">
   <fieldset>
 
   <!-- Form Name -->
-  <legend>Modifier un groupe</legend>
+  <legend>Créer un groupe</legend>
 
   <!-- Text input-->
   <div class="form-group">
     <label class="col-md-4 control-label" for="groupname">Nom du groupe</label>
     <div class="col-md-4">
-    <input id="groupname" name="groupname" placeholder="Nom" class="form-control input-md" value="<?php printf("%s",$promotion["name"]); ?>" type="text">
+    <input id="groupname" name="groupname" placeholder="SuperHero Jazzband" class="form-control input-md" required="" type="text">
     </div>
   </div>
 
   <!-- Button -->
   <div class="form-group">
-    <label class="col-md-4 control-label" for="submit"></label>
+    <label class="col-md-4 control-label" for="validate"></label>
     <div class="col-md-4">
-      <button id="submit" name="submit" class="btn btn-default">Envoyer</button>
+      <button id="validate" name="validate" class="btn btn-primary">Valider</button>
     </div>
   </div>
 
   </fieldset>
   </form>
-<?php
-include("include/footer.php") ?>
+  <?php
+  include("include/footer.php");
+   ?>

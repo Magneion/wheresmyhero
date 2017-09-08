@@ -23,8 +23,10 @@ $connection = new mysqli(
   <body>
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav">
-          <li><a href="./index.php">Accueil</a></li>
-          <li><a href="./select-groups.php">Groupes</a></li>
-          <li><a href="./select-students.php">Héros</a></li>
+          <li><a href="./index.php"><i class="glyphicon glyphicon-home"></i>Accueil</a></li>
+          <li><a href="./select-groups.php"><i class="glyphicon glyphicon-list"></i>Groupes</a></li>
+          <li><a href="./select-students.php"><i class="glyphicon glyphicon-list"></i>Héros</a></li>
+          <li><a href="./create-group.php"><i class="glyphicon glyphicon-plus"></i>Ajouter un groupe</a></li>
+          <li><a href="./create-student.php"><i class="glyphicon glyphicon-plus"></i>Ajouter un héros</a></li>
         </ul>
       </nav>

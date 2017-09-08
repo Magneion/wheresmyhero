@@ -1,5 +1,5 @@
 <?php
-include("include/header.php");
+  include("include/header.php");
 
   // Si on n’a pas de id dans les paramètres de l’URL, on bloque la page
   if (isset($_GET["id"]) && $_GET["id"] != "" && $_GET["id"] != 0) {
@@ -9,7 +9,7 @@ include("include/header.php");
       $request = sprintf("UPDATE promotions SET name='%s' WHERE id='%s'",
                   $_POST["groupname"], $_POST["id"]);
       if($connection->query($request)) {
-          printf("<div class='alert alert-success'>Groupe modifié</div>");
+          printf("<div class='alert alert-success'>Promotion modifiée</div>\n<a href='promotions.php'>Retour à la liste des promotions</a>");
       }
       else {
         // Gestion d’erreur SQL
@@ -28,31 +28,35 @@ include("include/header.php");
     die();
   }
 ?>
-
-    <form class="form-horizontal breathe">
+  <form method="post" class="form-horizontal">
   <fieldset>
 
   <!-- Form Name -->
-  <legend>Modifier un groupe</legend>
+  <legend>Modifier une promotion</legend>
 
-  <!-- Text input-->
+  <!-- Text input
+  Notez les balises PHP qui permettent l’affichage dynamique -->
   <div class="form-group">
     <label class="col-md-4 control-label" for="groupname">Nom du groupe</label>
     <div class="col-md-4">
-    <input id="groupname" name="groupname" placeholder="Nom" class="form-control input-md" value="<?php printf("%s",$promotion["name"]); ?>" type="text">
+    <input id="groupname" name="groupname"
+    placeholder="Nom de la promotion" class="form-control input-md"
+    required="" value="<?php printf("%s",$promotion["name"]); ?>"
+    type="text">
     </div>
   </div>
 
   <!-- Button -->
   <div class="form-group">
-    <label class="col-md-4 control-label" for="submit"></label>
+    <label class="col-md-4 control-label" for="validate"></label>
     <div class="col-md-4">
-      <button id="submit" name="submit" class="btn btn-default">Envoyer</button>
+      <input type="hidden" name="id" value="<?php printf("%s", $promotion["id"]);?>">
+      <button id="validate" name="validate" class="btn btn-primary">Valider</button>
     </div>
   </div>
 
   </fieldset>
   </form>
-
   <?php
-  include("include/footer.php") ?>
+  include("include/footer.php");
+   ?>

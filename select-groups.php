@@ -14,11 +14,16 @@ include("include/header.php");
       printf ('<div class="form-group">
         <li><label class="col-md-4 control-label" for="edit-group">%s</label>
         <div class="col-md-8">
+        <div id="list-group%s" name="list-group%s" class="btn btn-info"><a href="list-group.php?id=%d">Voir</a></div>
           <div id="edit-group%s" name="edit-group%s" class="btn btn-success"><a href="edit-group.php?id=%d">Modifier</a></div>
           <div id="del-group%s" name="del-group%s" class="btn btn-danger"><a href="del-group.php?id=%d">Supprimer</a></div>
-        </div></li>
+        </div>
+        </li>
       </div>',
       $row["name"],
+      $row["id"],
+      $row["id"],
+      $row["id"],
       $row["id"],
       $row["id"],
       $row["id"],

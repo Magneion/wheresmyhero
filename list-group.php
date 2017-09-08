@@ -8,8 +8,8 @@ include("include/header.php");
 <ul>
   <?php
 
-
-  if ($result = $connection->query("SELECT * FROM eleves")) {
+if(isset($_GET["id"]) && $_GET["id"] != "" && $_GET["id"] != 0) {
+  if ($result = $connection->query("SELECT * FROM eleves WHERE promotion_id ='%s', $_GET['id']") {
     while ($row = $result->fetch_assoc()) {
       printf ('<div class="form-group">
       <li><label class="col-md-4 control-label" for="edit-student">%s %s (%s)</label>
@@ -29,6 +29,7 @@ include("include/header.php");
     $row["id"]);
     }
   }
+}
   else {
     printf("Tu t'es planté");
   }
