@@ -3,7 +3,7 @@
 
   if(isset($_POST["user_validation"]) && $_POST["user_validation"] == "1"
     && is_numeric($_POST["id"])) {
-    $request = sprintf("DELETE FROM eleves WHERE id='%s'",$_POST["id"]);
+    $request = sprintf("DELETE FROM heroes WHERE id='%s'",$_POST["id"]);
     $result = $connection->query($request);
     if($result) {
       die("<div class='alert alert-success'>Suppression réussie</div>");
@@ -14,9 +14,9 @@
   }
 
   if(isset($_GET["id"]) && $_GET["id"] != "" && $_GET["id"] != 0)  {
-    $request = sprintf("SELECT * FROM eleves WHERE id=%d",$_GET["id"]);
+    $request = sprintf("SELECT * FROM heroes WHERE id=%d",$_GET["id"]);
     $result = $connection->query($request);
-    $student = $result->fetch_assoc();
+    $hero = $result->fetch_assoc();
   }
   else {
     die("<div class='alert alert-warning'>Vous devez renseigner un id</div>");
@@ -29,10 +29,10 @@
 <legend>Suppression d’un étudiant</legend>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="studentname">Nom de l’élève</label>
+  <label class="col-md-4 control-label" for="heroname">Nom du héros</label>
   <div class="col-md-4">
-  <input id="studentname" name="studentname"
-   value="<?=$student["firstname"]?> <?=$student["lastname"]?>"
+  <input id="heroname" name="heroname"
+   value="<?=$hero["firstname"]?> <?=$hero["lastname"]?>"
    class="form-control input-md"
    disabled="true"
    type="text">
@@ -41,7 +41,7 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="checkboxes">Attention, êtes-vous sûr de vouloir supprimer <?=$student["firstname"]?> <?=$student["lastname"]?> ?</label>
+  <label class="col-md-4 control-label" for="checkboxes">Attention, êtes-vous sûr de vouloir supprimer <?=$hero["firstname"]?> <?=$hero["lastname"]?> ?</label>
   <div class="col-md-2">
     <label class="checkbox-inline" for="checkboxes-0">
       <input name="user_validation" id="user_validation" value="1" type="checkbox">
@@ -51,7 +51,7 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="deletestudent"></label>
+  <label class="col-md-4 control-label" for="deletehero"></label>
   <div class="col-md-4">
     <input type="hidden" name="id" value="<?=$_GET["id"]?>">
     <button class="btn btn-danger">Supprimer</button>

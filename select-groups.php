@@ -9,7 +9,7 @@ include("include/header.php");
 
   <ul>
 <?php
-  if ($result = $connection->query("SELECT * FROM promotions")) {
+  if ($result = $connection->query("SELECT * FROM groups")) {
     while ($row = $result->fetch_assoc()) {
       printf ('<div class="form-group">
         <li><label class="col-md-4 control-label" for="edit-group">%s</label>

@@ -4,12 +4,12 @@
 // Si on a reçu des paramètres en POST grâce au formulaire
 if(isset($_POST["groupname"]) && $_POST["groupname"] != " ") {
   // On prépare la requête au serveur de base de données
-  $request = sprintf("INSERT INTO promotions (name) VALUES ('%s')",
+  $request = sprintf("INSERT INTO groups (name) VALUES ('%s')",
               $_POST["groupname"]);
   // On execute la requête
   if($connection->query($request)) {
       // Si on est ici, c’est que ça a marché
-      printf("<div class='alert alert-success'>Promotion créée</div>\n<a href='promotions.php'>Retour à la liste des promotions</a>");
+      printf("<div class='alert alert-success'>Groupe créé</div>\n<a href='select-groups.php'>Retour à la liste des groupes</a>");
   }
   else {
     // Si on est ici, c’est que ça a foiré. Message pour la gestion d’erreur MySQL

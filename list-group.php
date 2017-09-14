@@ -8,14 +8,14 @@ include("include/header.php");
 <ul>
   <?php
 
-if(isset($_GET["id"]) && $_GET["id"] != "" && $_GET["id"] != 0) {
-  if ($result = $connection->query("SELECT * FROM eleves WHERE promotion_id ='%s', $_GET['id']") {
-    while ($row = $result->fetch_assoc()) {
-      printf ('<div class="form-group">
-      <li><label class="col-md-4 control-label" for="edit-student">%s %s (%s)</label>
+  if(isset($_GET["id"]) && $_GET["id"] != "") {
+    if ($result = $connection->query(sprintf("SELECT * FROM groups INNER JOIN heroes ON groups.id = heroes.group_id WHERE groups.id ='%s'" , $_GET['id']))) {
+      while ($row = $result->fetch_assoc()) {
+        printf ('<div class="form-group">
+      <li><label class="col-md-4 control-label" for="edit-hero">%s %s (%s)</label>
       <div class="col-md-8">
-        <div id="edit-student%s" name="edit-student%s" class="btn btn-success"><a href="edit-student.php?id=%d">Modifier</a></div>
-        <div id="del-student%s" name="del-student%s" class="btn btn-danger"><a href="del-student.php?id=%s">Supprimer</a></div>
+        <div id="edit-hero%s" name="edit-hero%s" class="btn btn-success"><a href="edit-hero.php?id=%d">Modifier</a></div>
+        <div id="del-hero%s" name="del-hero%s" class="btn btn-danger"><a href="del-hero.php?id=%s">Supprimer</a></div>
       </div></li>
     </div>',
     $row["firstname"],
